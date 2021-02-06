@@ -1,11 +1,7 @@
 # -*- coding: utf8 -*-
 
-import unittest
 import copy
-
-testdata = [1, 45, 3, 123, 5, 7, 3, 2, 7, 8, 3, 2, 21, 5, 47, 6,
-            8, 5, 898, 42354, 23, 134, 234, 63, 745, 74, 68, 5, 23, 42, 42]
-expected = sorted(testdata)
+import unittest
 
 
 def bubble_sort(arr):
@@ -47,6 +43,11 @@ def shaker_sort(arr):
         top_index = last_swap_index
         if top_index == bot_index:
             break
+
+
+testdata = [1, 45, 3, 123, 5, 7, 3, 2, 7, 8, 3, 2, 21, 5, 47, 6,
+            8, 5, 898, 42354, 23, 134, 234, 63, 745, 74, 68, 5, 23, 42, 42]
+expected = sorted(testdata)
 
 
 class TestSort(unittest.TestCase):
