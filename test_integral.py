@@ -31,6 +31,17 @@ def enum_divisors(value):
     return sorted(result)
 
 
+def calc_digit(value):
+    """
+    桁数カウント
+    """
+    result = 0
+    while value:
+        result += 1
+        value //= 10
+    return result
+
+
 class TestIntegral(unittest.TestCase):
 
     def test_is_prime(self):
@@ -44,10 +55,22 @@ class TestIntegral(unittest.TestCase):
 
     def test_enum_divisors(self):
         # Arrange
+        testdata = 100
         expected = [1, 2, 4, 5, 10, 20, 25, 50, 100]
 
         # Act
-        actual = enum_divisors(100)
+        actual = enum_divisors(testdata)
+
+        # Assert
+        assert actual == expected
+
+    def test_calc_digit(self):
+        # Arrange
+        testdata = 1239483459827059273
+        expected = 19
+
+        # Act
+        actual = calc_digit(testdata)
 
         # Assert
         assert actual == expected
