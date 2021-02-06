@@ -42,6 +42,25 @@ def calc_digit(value):
     return result
 
 
+def prime_factorize(value):
+    """
+    素因数分解
+    """
+    result = []
+    i = 2
+    while i * i <= value:
+        if value % i == 0:
+            ex = 0
+            while (value % i == 0):
+                ex += 1
+                value /= i
+            result.append((i, ex))
+        i += 1
+    if value != 1:
+        result.append((value, 1))
+    return result
+
+
 class TestIntegral(unittest.TestCase):
 
     def test_is_prime(self):
@@ -71,6 +90,17 @@ class TestIntegral(unittest.TestCase):
 
         # Act
         actual = calc_digit(testdata)
+
+        # Assert
+        assert actual == expected
+
+    def test_prime_factorize(self):
+        # Arrange
+        testdata = 100
+        expected = [(2, 2), (5, 2)]
+
+        # Act
+        actual = prime_factorize(testdata)
 
         # Assert
         assert actual == expected
