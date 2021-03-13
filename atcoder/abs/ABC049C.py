@@ -1,6 +1,7 @@
 S = input()
 T = ''
 d = ['dream', 'dreamer', 'erase', 'eraser']
+dd = ['dream', 'dreamer', 'erase', 'eraser']
 
 def mp():
     for dd in d:
@@ -9,10 +10,16 @@ def mp():
     return ''
 
 while True:
-    T = mp()
-    if not T:
-        print('NO')
-        break
-    if T == S:
+    if S in dd:
         print('YES')
         break
+    dd = [di for di in dd if len(di) < len(S)]
+    dd = [di for di in dd if S.startswith(di)]
+    if not dd:
+        print('NO')
+        break
+    n = []
+    for di in dd:
+        for i in d:
+            n.append(di + i)
+    dd = n
