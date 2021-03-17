@@ -21,6 +21,7 @@ def Yes(): print("Yes")
 def No(): print("No")
 
 
+@lru_cache(maxsize=10000)
 def isprime(v) -> bool:
     """
     素数判定
@@ -35,6 +36,7 @@ def isprime(v) -> bool:
     return True
 
 
+@lru_cache(maxsize=10000)
 def coprime(a, b) -> bool:
     """
     互いに素
@@ -42,6 +44,7 @@ def coprime(a, b) -> bool:
     return gcd(a, b) == 1
 
 
+@lru_cache(maxsize=10000)
 def gcd(*v):
     """
     最大公約数
@@ -53,6 +56,7 @@ def _lcm_base(x, y):
     return (x * y) // math.gcd(x, y)
 
 
+@lru_cache(maxsize=10000)
 def lcm(*v):
     """
     最小公倍数
