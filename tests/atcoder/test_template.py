@@ -72,3 +72,12 @@ class TestTemplate(object):
         # Assert
         assert list(actual) == [[], [1], [2], [1, 2],
                                 [3], [1, 3], [2, 3], [1, 2, 3]]
+
+    def test_fibo(self):
+        # Arrange
+
+        # Act
+        actual = template.fibo(10)
+
+        # Assert
+        assert actual == 55

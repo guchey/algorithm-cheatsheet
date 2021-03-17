@@ -1,7 +1,7 @@
 import math
 from math import ceil, floor, sqrt
 import itertools
-from functools import reduce
+from functools import reduce, lru_cache
 from operator import add, sub, mul
 
 
@@ -70,3 +70,15 @@ def bitsearch(v):
             if (i >> j) & 1:
                 b.append(v[j])
         yield b
+
+
+@lru_cache(maxsize=10000)
+def fibo(v):
+    """
+    フィボナッチ数列
+    """
+    if v == 0:
+        return 0
+    if v == 1:
+        return 1
+    return fibo(v - 1) + fibo(v - 2)
