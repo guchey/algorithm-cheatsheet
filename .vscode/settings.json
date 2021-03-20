@@ -1,13 +1,8 @@
 {
-    "python.testing.unittestArgs": [
-        "-v",
-        "-s",
-        ".",
-        "-p",
-        "test_*.py"
+    "python.testing.pytestArgs": [
+        "tests"
     ],
-    "python.testing.pytestEnabled": false,
+    "python.testing.unittestEnabled": false,
     "python.testing.nosetestsEnabled": false,
-    "python.testing.unittestEnabled": true,
-    "python.pythonPath": "/Users/taguchi/git/github.com/taguchi8s/algorithm-cheatsheet/.venv/bin/python"
+    "python.testing.pytestEnabled": true
 }

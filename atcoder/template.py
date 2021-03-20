@@ -76,6 +76,24 @@ def bitsearch(v):
         yield b
 
 
+def recursivesearch(w, v, i=None):
+    """
+    再帰で組み合わせを列挙
+    :param w: 求めたい総和
+    :param v: 配列
+    :param i: 現在位置
+    """
+    if i is None:
+        i = len(v)
+    if i == 0:
+        return w == 0
+    if recursivesearch(w, v, i - 1):
+        return True
+    if recursivesearch(w - v[i - 1], v, i - 1):
+        return True
+    return False
+
+
 @lru_cache(maxsize=10000)
 def fibo(v):
     """
@@ -86,3 +104,25 @@ def fibo(v):
     if v == 1:
         return 1
     return fibo(v - 1) + fibo(v - 2)
+
+
+def dppush(hs):
+    """
+    0 -> i まで遷移するときの最小コストを貰う遷移式（動的計画法）で計算する。
+    遷移できるパターンとその際のコストは以下の通り
+    i -> i+1 => abs(hs[i] - hs[i+1])
+    i -> i+2 => abs(hs[i] - hs[i+2])
+
+    :param hs: 0 -> i 高さの配列
+    """
+    N = len(hs)
+    INF = 1000000000000
+    dp = [INF for _ in range(N)]  # 初期化
+    for i in range(N):
+        if i == 0:
+            dp[0] = 0  # 初期条件
+        if i > 0:
+            dp[i] = min(dp[i], dp[i-1] + abs(hs[i - 1] - hs[i]))
+            if i > 1:
+                dp[i] = min(dp[i], dp[i-2] + abs(hs[i - 2] - hs[i]))
+    return dp[N - 1]

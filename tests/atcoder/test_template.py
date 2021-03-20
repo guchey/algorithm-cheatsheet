@@ -73,6 +73,19 @@ class TestTemplate(object):
         assert list(actual) == [[], [1], [2], [1, 2],
                                 [3], [1, 3], [2, 3], [1, 2, 3]]
 
+    @pytest.mark.parametrize("w,n,expected", [
+        (4, [1, 2, 3, 4], True),
+        (100, [1, 2, 3, 4], False),
+    ])
+    def test_recursivesearch(self, w, n, expected):
+        # Arrange
+
+        # Act
+        actual = template.recursivesearch(w, n)
+
+        # Assert
+        assert actual is expected
+
     def test_fibo(self):
         # Arrange
 
@@ -81,3 +94,12 @@ class TestTemplate(object):
 
         # Assert
         assert actual == 55
+
+    def test_dppush(self):
+        # Arrange
+
+        # Act
+        actual = template.dppush([2, 9, 4, 5, 1, 6, 10])
+
+        # Assert
+        assert actual == 8
