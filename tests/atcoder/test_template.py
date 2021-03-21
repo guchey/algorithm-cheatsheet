@@ -103,3 +103,13 @@ class TestTemplate(object):
 
         # Assert
         assert actual == 8
+
+    def test_dpknapsack(self):
+        # Arrange
+
+        # Act
+        actual = template.dpknapsack(
+            15, [(2, 3), (1, 2), (3, 6), (2, 1), (1, 3), (5, 85)])
+
+        # Assert
+        assert actual == 0

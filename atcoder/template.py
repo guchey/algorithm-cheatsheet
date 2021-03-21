@@ -1,5 +1,5 @@
 import math
-from math import ceil, floor, sqrt
+from math import ceil, e, floor, sqrt
 import itertools
 from functools import reduce, lru_cache
 from operator import add, sub, mul
@@ -126,3 +126,20 @@ def dppush(hs):
             if i > 1:
                 dp[i] = min(dp[i], dp[i-2] + abs(hs[i - 2] - hs[i]))
     return dp[N - 1]
+
+
+def dpknapsack(W, weight_and_value_pair):
+    """
+    ナップサック問題を動的計画法で計算する
+    :param W: 総重量（製薬）
+    :param wait_and_value_pair: (重量, 価値)
+    """
+    N = len(weight_and_value_pair)
+    dp = [[0 for _ in range(W+1)] for _ in range(N+1)]  # 初期化
+    for i in range(N):
+        for j in range(W):
+            weight, value = weight_and_value_pair[i]
+            if j - weight >= 0:
+                dp[i+1][j] = max(dp[i+1][j], dp[i][j - weight] + value)
+            dp[i][j] = max(dp[i+1][j], dp[i][j])
+    return dp[N][W]
